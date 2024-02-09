@@ -1,5 +1,5 @@
 import yaml
-from sqlalchemy import create_engine, inspect
+from sqlalchemy import create_engine
 import pandas as pd
 
 
