@@ -10,3 +10,5 @@ def load_credentials(filename):
     print(credentials_dict)
 
     return credentials_dict
+
+load_credentials('credentials.yaml')
