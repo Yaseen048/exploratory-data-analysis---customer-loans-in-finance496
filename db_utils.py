@@ -38,10 +38,14 @@ def save_data(data):
     data.to_csv("loan_payments.csv", index=False)
 
 def load_data(file):
-    return pd.read_csv(file)
+    df = pd.read_csv(file)
+    df.info()
+    return df
 
 yaml_file = load_credentials('credentials.yaml')
 data = RDSDatabaseConnector(yaml_file)
 data.create_engine()
 data.extractRDSdata()
 save_data(data.extractRDSdata())
+
+load_data('loan_payments.csv')
