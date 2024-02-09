@@ -34,7 +34,11 @@ def load_credentials(filename):
 
     return credentials_dict
 
+def save_data(data):
+    data.to_csv("loan_payments.csv", index=False)
+
 yaml_file = load_credentials('credentials.yaml')
 data = RDSDatabaseConnector(yaml_file)
 data.create_engine()
 data.extractRDSdata()
+save_data(data.extractRDSdata())
