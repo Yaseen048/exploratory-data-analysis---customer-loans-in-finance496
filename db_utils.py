@@ -8,7 +8,14 @@ class RDSDatabaseConnector:
         self.credentials_dict = credentials_dict
 
     def RDSDatabaseConnector(self):    
-
+        engine = create_engine(
+                url="postgresql://{0}:{1}@{2}:{3}/{4}".format(
+                    self.credentials_dict["RDS_USER"],self.credentials_dict["RDS_PASSWORD"],
+                    self.credentials_dict["RDS_HOST"], self.credentials_dict["RDS_PORT"],
+                    self.credentials_dict["RDS_DATABASE"]
+                )
+        )
+        
         pass
     pass
 
