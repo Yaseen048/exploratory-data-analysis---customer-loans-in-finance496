@@ -1,23 +1,29 @@
 import yaml
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect
 import pandas as pd
+
 
 
 class RDSDatabaseConnector:
     def __init__(self,credentials_dict):
         self.credentials_dict = credentials_dict
 
-    def RDSDatabaseConnector(self):    
-        engine = create_engine(
-                url="postgresql://{0}:{1}@{2}:{3}/{4}".format(
+    def create_engine(self):    
+        self.engine = create_engine(
+                "postgresql+psycopg2://{0}:{1}@{2}:{3}/{4}".format(
                     self.credentials_dict["RDS_USER"],self.credentials_dict["RDS_PASSWORD"],
                     self.credentials_dict["RDS_HOST"], self.credentials_dict["RDS_PORT"],
                     self.credentials_dict["RDS_DATABASE"]
                 )
-        )
-        
-        pass
-    pass
+        )       
+        return self.engine
+    
+    def extractRDSdata(self):
+        with self.engine.execution_options(isolation_level='AUTOCOMMIT').connect() as conn:
+            loan_payments = pd.read_sql_table('loan_payments', conn)
+            print(loan_payments.head(5))
+
+
 
 
 
@@ -28,4 +34,7 @@ def load_credentials(filename):
 
     return credentials_dict
 
-load_credentials('credentials.yaml')
+yaml_file = load_credentials('credentials.yaml')
+data = RDSDatabaseConnector(yaml_file)
+data.create_engine()
+data.extractRDSdata()
