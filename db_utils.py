@@ -22,7 +22,7 @@ class RDSDatabaseConnector:
         with self.engine.execution_options(isolation_level='AUTOCOMMIT').connect() as conn:
             loan_payments = pd.read_sql_table('loan_payments', conn)
             print(loan_payments.head(5))
-
+        return loan_payments
 
 
 
