@@ -13,4 +13,4 @@ This project is coded in python. The following modules were required to be insta
 The first part of the project was to extract the loan payment data from a cloud database.
 
 The second part of the project involves reviewing the data to identify any issues such as missing or incorrectly formatted data.
-There are 43 columns which include 20 float, 8 integer and 15 object data types. Upon basic inspection, we can leave the float and integer data types unchanged. We then inspect the 15 coloumns with object data types as this can contain a mix of data types.
+There are 43 columns which include 20 float, 8 integer and 15 object data types. Upon basic inspection, we can leave the float and integer data types unchanged. We then inspect the 15 coloumns with object data types as this can contain a mix of data types. Among the 15 columns containing object data types, I concluded that they can be cpnverted into either a string or datetime64 datatype.
