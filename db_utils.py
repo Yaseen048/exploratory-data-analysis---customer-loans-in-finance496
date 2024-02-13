@@ -40,6 +40,7 @@ def save_data(data):
 def load_data(file):
     df = pd.read_csv(file)
     df.info()
+    print(df.head(5))
     return df
 
 yaml_file = load_credentials('credentials.yaml')
@@ -48,4 +49,6 @@ data.create_engine()
 data.extractRDSdata()
 save_data(data.extractRDSdata())
 
-load_data('loan_payments.csv')
+
+
+df = load_data('loan_payments.csv')
