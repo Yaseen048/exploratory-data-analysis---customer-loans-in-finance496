@@ -1,5 +1,5 @@
 import pandas as pd
-from statistics import mean, median
+from statistics import mean, median, stdev
 
 
 class DataFrameInfo:
@@ -12,7 +12,10 @@ class DataFrameInfo:
     def stat_value(self, column):
         mean_av = mean(self.df[column])
         median_av = median(self.df[column])
-        print(f'The mean {column} is {mean_av}.\nThe median of {column} is {median_av}')
+        standard_dev = stdev(self.df[column])
+        print(f'The mean {column} is {mean_av}.\n',
+              f'The median of {column} is {median_av}\n',
+              f'The standard deviation of {column} is {standard_dev}')
 
 data = DataFrameInfo('loan_payments.csv')
 data.data_info()
