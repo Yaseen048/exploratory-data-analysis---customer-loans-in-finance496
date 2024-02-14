@@ -16,8 +16,12 @@ class DataFrameInfo:
         print(f'The mean {column} is {mean_av}.\n',
               f'The median of {column} is {median_av}\n',
               f'The standard deviation of {column} is {standard_dev}')
+        
+    def null_percent(self, column):
+        print(f"Percentage of nulls: {self.df[column].isnull().sum()/len(self.df)}")
 
 data = DataFrameInfo('loan_payments.csv')
 data.data_info()
 data.stat_value('funded_amount_inv')
+data.null_percent('mths_since_last_record')
         
