@@ -15,7 +15,7 @@ class DataTranfrom():
         data_format = '%m-%Y'
         #self.df[column] = pd.to_datetime(self.df[column], format=data_format)
 
-        self.df[column] = pd.to_datetime(self.df[column])
+        self.df[column] = pd.to_datetime(self.df[column], errors='coerce')
 
         #self.df[column] = self.df[column].apply(parse)
         #self.df[column] = pd.to_datetime(self.df[column], infer_datetime_format=True, errors='coerce')
