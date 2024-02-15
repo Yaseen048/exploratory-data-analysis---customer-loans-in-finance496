@@ -6,8 +6,8 @@ class DataTranfrom:
     def __init__(self, data):
         self.df = pd.read_csv(data)
         
-    def convert_to_str(self, column):
-        self.df[column] = self.df[column].astype('string')
+    def convert_to_category(self, column):
+        self.df[column] = self.df[column].astype('category')
         print(self.df[column].head(5))
         self.df.info()
 
