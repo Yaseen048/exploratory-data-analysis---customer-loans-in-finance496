@@ -1,7 +1,7 @@
 import pandas as pd
 from dateutil.parser import parse
 
-class DataTranfrom():
+class DataTranfrom:
 
     def __init__(self, data):
         self.df = pd.read_csv(data)
