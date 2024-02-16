@@ -20,7 +20,7 @@ class DataFrameInfo:
     def null_percent(self, column):
         print(f"Percentage of nulls: {self.df[column].isnull().sum()/len(self.df)}")
 
-data = DataFrameInfo('loan_payments.csv')
+data = DataFrameInfo('loan_payments_formatted.csv')
 data.data_info()
 data.stat_value('funded_amount_inv')
 data.null_percent('mths_since_last_record')
