@@ -20,6 +20,8 @@ class DataTranfrom:
         self.df[column] = self.df[column].str.replace(r'\D', '',regex=True)
         self.df[column] = self.df[column].astype('float')
         
+    def save_formatted_data(self):
+        self.df.to_csv('loan_payments_formatted.csv', index=False)
 
         
 
@@ -31,7 +33,7 @@ cat_columns = ['grade', 'sub_grade', 'home_ownership', 'verification_status', 'l
 date_columns = ['issue_date', 'earliest_credit_line','last_payment_date', 'last_credit_pull_date', 'next_payment_date']
 formatted_data.convert_to_category(cat_columns)
 formatted_data.convert_to_datetime(date_columns)
-
+formatted_data.save_formatted_data()
 
 
 
