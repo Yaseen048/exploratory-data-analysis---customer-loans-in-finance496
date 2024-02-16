@@ -12,6 +12,10 @@ class DataFrameTransform:
 
     def drop_col(self, columns):
         self.df.drop(columns, axis=1, inplace=True)
+
+    def impute_value(self, column, value):
+        self.df[column].fillna(value)
+
         
  
 
@@ -23,3 +27,4 @@ data.null_count()
 columns = ['mths_since_last_delinq','mths_since_last_record', 'next_payment_date', 'mths_since_last_major_derog']
 data.drop_col(columns)
 data.null_count()
+#data.impute_value('')

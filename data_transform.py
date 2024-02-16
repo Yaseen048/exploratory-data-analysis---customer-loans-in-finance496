@@ -30,5 +30,5 @@ class DataTranfrom:
 formatted_data = DataTranfrom('loan_payments.csv')
 str_columns = ['grade', 'sub_grade', 'home_ownership', 'verification_status', 'loan_status', 'payment_plan', 'purpose', 'application_type']
 date_columns = ['issue_date', 'earliest_credit_line','last_payment_date', 'last_credit_pull_date']#'next_payment_date'
-formatted_data.convert_to_str(str_columns)
+formatted_data.convert_to_category(str_columns)
 formatted_data.convert_to_datetime(date_columns)
