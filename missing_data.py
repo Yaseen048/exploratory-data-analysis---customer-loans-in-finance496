@@ -34,10 +34,14 @@ data = DataFrameTransform('loan_payments_formatted.csv')
 data.null_count()
 columns = ['mths_since_last_delinq','mths_since_last_record', 'next_payment_date', 'mths_since_last_major_derog']
 data.drop_col(columns)
-data.null_count()
 data.drop_row(['last_payment_date', 'last_credit_pull_date','collections_12_mths_ex_med'])
-data.null_count()
-data.impute_value_mean(['int_rate', 'funded_amount'])
+
+
+col_list =['int_rate', 'funded_amount']
+for col in col_list:
+    data.impute_value_mean(col)
+
 data.impute_value_median('term')
 data.impute_value_mode('employment_length')
+#print(data.df['employment_length'].mode())
 data.null_count()
