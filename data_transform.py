@@ -29,7 +29,7 @@ class DataTranfrom:
 
 formatted_data = DataTranfrom('loan_payments.csv')
 formatted_data.remove_units('term')
-cat_columns = ['grade', 'sub_grade', 'home_ownership', 'verification_status', 'loan_status', 'payment_plan', 'purpose', 'application_type']
+cat_columns = ['grade', 'sub_grade','employment_length', 'home_ownership', 'verification_status', 'loan_status', 'payment_plan', 'purpose', 'application_type']
 date_columns = ['issue_date', 'earliest_credit_line','last_payment_date', 'last_credit_pull_date', 'next_payment_date']
 formatted_data.convert_to_category(cat_columns)
 formatted_data.convert_to_datetime(date_columns)

@@ -16,9 +16,14 @@ class DataFrameTransform:
     def drop_row(self, columns):
         self.df.dropna(subset= columns, inplace=True)
 
-    def impute_value(self, column):
+    def impute_value_mean(self, column):
         self.df[column].fillna(self.df[column].mean(), inplace = True)
 
+    def impute_value_median(self, column):
+        self.df[column].fillna(self.df[column].median(), inplace = True)
+
+    def impute_value_mode(self, column):
+        self.df[column].fillna(self.df[column].mode(), inplace = True)
         
  
 
@@ -32,5 +37,7 @@ data.drop_col(columns)
 data.null_count()
 data.drop_row(['last_payment_date', 'last_credit_pull_date','collections_12_mths_ex_med'])
 data.null_count()
-data.impute_value('int_rate')
+data.impute_value_mean(['int_rate', 'funded_amount'])
+data.impute_value_median('term')
+data.impute_value_mode('employment_length')
 data.null_count()
