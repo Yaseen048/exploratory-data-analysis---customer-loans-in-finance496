@@ -1,6 +1,5 @@
 import pandas as pd
-
-
+import data_info
 class DataFrameTransform:
     
     def __init__(self, data):
@@ -24,11 +23,17 @@ class DataFrameTransform:
 
     def impute_value_mode(self, column):
         self.df[column].fillna(self.df[column].mode()[0], inplace = True)
+
+    def save_formatted_data(self):
+        self.df.to_csv('loan_payments_no_null.csv', index=False)
+
         
  
 
 class Plotter:
-    pass
+    def null_removal_plot(self):
+        pass
+
 
 data = DataFrameTransform('loan_payments_formatted.csv')
 data.null_count()
@@ -44,3 +49,7 @@ for col in col_list:
 data.impute_value_median('term')
 data.impute_value_mode('employment_length')
 data.null_count()
+data.save_formatted_data()
+
+loan_payment = data_info.DataFrameInfo('loan_payments.csv')
+loan_payment_no_null = data_info.DataFrameInfo('')
