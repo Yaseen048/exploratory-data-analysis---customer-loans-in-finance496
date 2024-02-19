@@ -31,7 +31,12 @@ class DataFrameTransform:
  
 
 class Plotter:
+
+    def __init__(self, data):
+        self.df = pd.read_csv(data)
+
     def null_removal_plot(self):
+            
         pass
 
 
@@ -52,4 +57,7 @@ data.null_count()
 data.save_formatted_data()
 
 loan_payment = data_info.DataFrameInfo('loan_payments.csv')
-loan_payment_no_null = data_info.DataFrameInfo('')
+loan_payment_no_null = data_info.DataFrameInfo('loan_payments_no_null.csv')
+
+loan_payment.data_info()
+loan_payment_no_null.data_info()
