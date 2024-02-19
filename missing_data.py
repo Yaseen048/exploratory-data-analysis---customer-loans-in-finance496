@@ -23,7 +23,7 @@ class DataFrameTransform:
         self.df[column].fillna(self.df[column].median(), inplace = True)
 
     def impute_value_mode(self, column):
-        self.df[column].fillna(self.df[column].mode(), inplace = True)
+        self.df[column].fillna(self.df[column].mode()[0], inplace = True)
         
  
 
@@ -43,5 +43,4 @@ for col in col_list:
 
 data.impute_value_median('term')
 data.impute_value_mode('employment_length')
-#print(data.df['employment_length'].mode())
 data.null_count()
